@@ -200,13 +200,19 @@ func initConfiguration() {
 
 	defer file.Close()
 	decoder := json.NewDecoder(file)
-	configuration := Configuration{}
+	configuration := Configuration{
+		KafkaTopicName: "coc-positem-sync-",
+		StoreNumber:    "5518",
+	}
 	err = decoder.Decode(&configuration)
 	if err != nil {
 		log.Panicln("Reading configuration error:", err)
 	}
 
-	configuration.StoreNumber = os.Getenv("StoreNumber")
+	storeNumber, existInEnv := os.LookupEnv("StoreNumber")
+	if existInEnv {
+		configuration.StoreNumber = storeNumber
+	}
 
 	//brokers, group, topics
 	brokers = configuration.KafkaBootstrapServers

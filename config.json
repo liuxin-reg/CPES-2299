@@ -1,4 +1,4 @@
 {
-    "KafkaBootstrapServers": ["localhost:9092"],
-    "KafkaTopicName": "coc-postitem-sync-"
+    "KafkaBootstrapServers": ["192.168.1.195:9092"],
+    "KafkaTopicName": "coc-positem-sync-"
 }
