@@ -17,9 +17,9 @@ import (
 )
 
 var (
-	brokers                       []string = []string{"localhost:9092"}
+	brokers                       []string = []string{"192.168.1.195:9092"}
 	group                                  = "5518-dev"
-	topics                                 = "cpc-postitem-sync-5518"
+	topics                                 = "cpc-positem-sync-5518"
 	runtimeContextEnvironmentType          = "dev"
 )
 
@@ -30,7 +30,7 @@ const (
 )
 
 func main() {
-	//	initConfiguration()
+	//initConfiguration()
 	config := configConsumer()
 	startConsumerGroup(config)
 }
@@ -201,7 +201,7 @@ func initConfiguration() {
 	defer file.Close()
 	decoder := json.NewDecoder(file)
 	configuration := Configuration{
-		KafkaTopicName: "coc-positem-sync-",
+		KafkaTopicName: "cpc-positem-sync-",
 		StoreNumber:    "5518",
 	}
 	err = decoder.Decode(&configuration)
